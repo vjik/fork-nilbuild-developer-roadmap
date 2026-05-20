@@ -6,9 +6,12 @@ Memory Management is a crucial part of PHP performance optimization. Efficient m
     echo memory_get_usage();  // Outputs: 514576
     unset($string);
     echo memory_get_usage();  // Outputs: 346672
-    
 
-In this code snippet, you'll notice that the memory used remains the same even when the `$string` variable is unset. This is because `unset()` only reduces the reference count of the variable in PHP's memory manager, and the memory will be cleared at the end of script execution. Avoiding unnecessary data storage and using inherent PHP functions, can help optimize memory management.
+In this example, memory usage decreases after the `$string` variable is unset. This occurs because `unset()` decreases the reference count, and when it reaches zero, the memory associated with the variable is freed and returned to PHP’s internal memory manager.
+
+However, this memory is not necessarily returned to the operating system. Instead, it remains allocated to PHP and can be reused for subsequent operations within the script.
+
+Avoiding unnecessary data storage and leveraging built-in PHP functions can help improve memory efficiency.
 
 Visit the following resources to learn more:
 
